@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 개념 1 -> 그냥 띄어쓰기는 후손, ">" 는 자손 */
+
+      /* 개념 2 -> ID는 문서 내에서 유일해야 함 */
+
+      /* 자식 선택자는 바로 아래 단계  */
+      /* div > ul > li > a {
+        color: red;
+      } */
+
+      /* 후손 선택자는 쓸 때 조심해야 함.  */
+      /* div a {
+        color: blue;
+      } */
+
+      /* 첫번째 li만 속성 적용하고 싶으면  */
+      div > ul > li:first-child {
+        background-color: red;
+      }
+
+      /* 마지막 li 만 속성 적용하고 싶으면  */
+      div li:last-child {
+        background-color: blue;
+      }
+
+      /* 짝수 li만 속성 적용하고 싶으면  */
+      div li:nth-child(even) {
+        background-color: orange;
+      }
+
+      /* li 태그 중 class가 second인 요소들의 글씨 크기를 24px로 변경 */
+      div li.second {
+        font-size: 24px;
+      }
+
+      /* ID = title 인 요소에 마우스를 올렸을때 변경*/
+      #title:hover {
+        color: red;
+      }
+
+      body {
+        width: 80%;
+        border: 1px solid black;
+      }
+
+      div {
+        width: 80%;
+        background-color: plum;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div><h1 id="title">HTML5 기본</h1></div>
+    <div>
+      <ul>
+        <li><a href="#">메뉴-1</a></li>
+        <li class="second"><a href="#">메뉴-2</a></li>
+        <li><a href="#">메뉴-3</a></li>
+        <li><a href="#">메뉴-4</a></li>
+        <li><a href="#">메뉴-5</a></li>
+      </ul>
+    </div>
+    <div>
+      <div>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+      <div>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+    </div>
+    <div><span>서울특별시강서구내발산동</span></div>
+  </body>
+</html>

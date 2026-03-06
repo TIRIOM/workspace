@@ -1,0 +1,77 @@
+<!-- ul 태그 안에 자식 li 6개 -->
+ul>li*6
+
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<!-- head, main, footer -->
+head+main+footer
+
+<head></head>
+<main></main>
+<footer></footer>
+
+<!-- ul>li.test 생성하기  -->
+ul>li.test
+
+<ul>
+  <li class="test"></li>
+</ul>
+
+<!-- ID로 요소 생성하기 -->
+div>div>p#myId
+
+<div>
+  <div>
+    <p id="myId"></p>
+  </div>
+</div>
+
+<!-- 똑같은 요소 생성하기 -->
+ul>li{1}*6
+
+<ul>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+  <li>1</li>
+</ul>
+
+<!-- 순차대로 요소 생성 -->
+<!-- 순차적 작성할때는 $ -->
+
+ul>li{$}*10
+
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>10</li>
+</ul>
+
+<!-- 클래스와 순차적 내용 생성 -->
+<!-- 내용 쓸때는 중괄호,  -->
+
+ul>li.li${li요소}*3
+
+<ul>
+  <li class="li1">li요소</li>
+  <li class="li2">li요소</li>
+  <li class="li3">li요소</li>
+</ul>
+
+<!-- 아이디와 클래스 클래스 순차적 내용 생성 -->
+<!--ID가 우선순위가 높음으로-->

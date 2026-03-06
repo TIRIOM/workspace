@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 구성 방식 : 
+     form action = "전송 위치 " name="form Name" method ="전송 방식 " -->
+    <!-- 질문 : form name은 무슨 의미?  -->
+    <form action="type">이름 <input type="text" name="name" /></form>
+    <form action="radio">
+      성별 <input type="radio" name="gender" value="male" /> 남자
+      <input type="radio" name="gender" value="female" /> 여자
+    </form>
+    <form action="button" method="get">
+      <input type="submit" name="submit" value="가입하기" />
+    </form>
+  </body>
+</html>
+\
