@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 이렇게만 하면 FLOAT 때문에 박스 인식 못함  */
+      div.item {
+        margin: 5px;
+        padding: 10px;
+        border: 2px solid black;
+      }
+
+      /* float 때문에 박스 인식 못하는 문제 해결 */
+      div.container {
+        overflow: hidden;
+        display: flex;
+      }
+
+      /* 만약 똑같은 거에 속성을 넣으면 어떻게 될까? */
+      /* 마지막 값을 적용받는다. 즉, 덮어쓰기  */
+      /* div.container {
+        display: block;
+      } */
+    </style>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ....</p>
+    <div class="container">
+      <div class="item">메뉴-1</div>
+      <div class="item">메뉴-2</div>
+      <div class="item">메뉴-3</div>
+      <div class="item">메뉴-4</div>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+  </body>
+</html>

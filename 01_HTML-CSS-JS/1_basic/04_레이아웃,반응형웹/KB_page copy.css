@@ -1,0 +1,109 @@
+/* TIP : 작업의 편의성을 위해, section 스타일 잡음.  */
+section {
+  border: 1px solid black;
+}
+header {
+  height: 200px;
+  display: flex;
+  /* 중요 !! 정렬하고자 하는 요소의 부모한테 flex를 설정해야 함 
+  FLEX는 -> 내부 요소를 유연하게 정렬 / 배치 가 가능하다.  */
+}
+/* 검색창 <-> 로고 수평으로 놔두고 싶을때는 float 써도 되는데, flex를 주로 더 씀.  */
+#main-logo {
+  width: 120px;
+  border-radius: 5%;
+}
+
+header > section:nth-child(1) {
+  /* display: flex; */
+  align-items: center;
+  flex-basis: 15%;
+  /* flex-basis : 요소의 기본 크기 설정.  */
+}
+
+/* [SEARCH EREA 스타일 적용] */
+/* 방법 1 :  flex */
+/* header > section:nth-child(2) {
+  flex-basis: 70%;
+  margin: 0 30px;
+} */
+/* 방법 2 : justify-content / align-items */
+header > section:nth-child(2) {
+  display: flex;
+  /* 좌우 가운데 정렬  */
+  justify-content: center;
+  /* 상하 가운데 정렬  */
+  align-items: center;
+}
+
+/* [USER INFO 스타일 적용] */
+header > section:nth-child(3) {
+  flex-basis: 15%;
+}
+
+/* [SEARCH AREA 스타일 적용] */
+.search-area fieldset {
+  border: 2px solid #ccc;
+  margin: 0;
+  padding: 7px;
+  border-radius: 5px;
+  /* 정렬하고 싶을 때  */
+  display: flex;
+}
+
+#query {
+  width: 90%;
+  font-size: 20px;
+  border: none;
+  /* 테두리 없애기  */
+  outline: 0; /*none 도 가능*/
+  /* outline : input 태그에 포커스 시 생기는 테두리 인데 없앰 */
+}
+
+#search-btn {
+  width: 10%;
+  font-size: 1.1em;
+  /*1.1 배  */
+  background-color: white;
+  color: #444;
+}
+
+nav {
+  border-bottom: 2px solid #0000ff;
+  height: 50px;
+}
+
+nav > ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+nav > ul > li {
+  flex-basis: 150px;
+}
+
+nav > ul > li > a {
+  font-weight: bold;
+  text-align: center;
+  /* 밑줄 삭제  */
+  text-decoration: none;
+  color: black;
+  /* block 형식으로 바꾸어서  */
+  display: block;
+  text-align: center;
+  height: 100%;
+  padding: 12px 0;
+
+  /*  */
+  line-height: 45px;
+}
+
+nav a:hover {
+  background-color: #444;
+  color: white;
+  border-radius: 10px;
+  height: 50px;
+}

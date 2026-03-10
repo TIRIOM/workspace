@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ellipsis {
+        white-space: nowrap; /* 1. 줄바꿈 금지 → 텍스트가 한 줄로 쭉 늘어남 */
+        overflow: hidden; /* 2. 넘치는 부분 잘라냄 */
+        text-overflow: ellipsis; /* 3. 잘린 부분을 ...으로 표시 */
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="ellipsis">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </h1>
+    <p class="ellipsis">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+  </body>
+</html>
