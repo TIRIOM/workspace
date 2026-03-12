@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>변수</h3>
+    <pre>
+        var : 
+        1. 담긴 값 변할 수 있음 (변수)
+        2. 변수명 중복 가능 ( 덮어쓰기 )
+        3. 함수 레벨  scope
+
+        let : 
+        1. 담긴 값 변할 수 있음 (변수)
+        2. 변수명 중복 불가 
+        3. 블록 레벨  scope
+        
+        const : 
+        1. 상수
+        2. 변수명 중복 불가 
+        3. 블록 레벨 scope
+
+        가장 많이 쓰는 것 
+        1순위 : const 
+        WHY? js는 특정 요소를 선택해서 사용하는 경우가 많아서 상수에 고정시켜 둚
+
+        2순위 : let
+        WHY? 값이 변해야 할 때 사용
+        
+        3순위 : var
+        WHY? 버그가 많습니다. 
+        
+    </pre>
+
+    <script>
+      //변수 선언 및 초기화
+      // 초기화 : 처음으로 값을 할당하는 것
+      let radious = 10;
+      let pi = 3.14;
+
+      alert(2 * radious * pi);
+    </script>
+  </body>
+</html>

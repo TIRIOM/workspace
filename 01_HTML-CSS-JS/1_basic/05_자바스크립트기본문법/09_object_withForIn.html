@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>자바스크립트 객체</h3>
+    <pre>
+        자바스크립트의 객체는 {중괄호} 내에
+        key : value가 모여있는 형태로 작성된다. 
+
+        {K:V; K:V ;K:V }
+    </pre>
+
+    <script>
+      //객체 선언
+      let product = {
+        // 주의 : 자바스크립트 객체의 key값은 "",''를 생략하여도 문자열로 인식
+        //단 val 값은 문자열인 경우, "".'' 필수 작성
+        제품명: '7D 건조 망고',
+        유형: '당절임',
+        성분: ['망고', '설탕', '메타중야황산나트륨', '치자황색소'],
+        원산지: '필리핀',
+      };
+      //변수명.key ->  val 출력
+      console.log(product.제품명);
+
+      // 객체 전용 for문 을 활용해서 val 출력
+      //for (변수 in 객체명){}
+      for (let i in product) {
+        console.log(i);
+        console.log(product[i]);
+
+        //alert(i + ':' + product[i]);
+        alert(`${i} : ${product[i]}`);
+
+        //템플릿 리터럴 : 백틱 안에 쓰고 싶은 형식으로 쓰라. 변수는 $ 붙여라.
+      }
+    </script>
+  </body>
+</html>

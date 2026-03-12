@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // Date 객체 : 현재 시간을 알려줌
+      let date = new Date();
+      let hours = date.getHours();
+      console.log(date);
+
+      if (hours < 12) {
+        alert('오전');
+      } else {
+        alert('오후');
+      }
+    </script>
+  </head>
+  <body>
+    <h3>조건문 if else</h3>
+    <pre>
+        작성법 
+        if(조건식){
+            조건식이 true 일 때 수행할 코드
+        }else{
+            조건식이 false 일 때 수행할 코드
+        }
+    </pre>
+  </body>
+</html>

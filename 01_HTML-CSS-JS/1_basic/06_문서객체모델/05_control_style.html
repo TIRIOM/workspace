@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Basic</title>
+    <script>
+      window.onload = function () {
+
+        // ① HTML 문자열 만들기
+        // 빈 문자열에 for 루프를 돌면서 <h1> 태그 문자열을 이어 붙임
+        let html = '';
+        for (let i = 0; i < 10; i++) {
+          // += : 기존 문자열 뒤에 새 문자열을 추가
+          html += '<h1>Header - ' + i + '</h1>';
+        }
+
+        // ② innerText : 태그를 '문자' 그대로 화면에 보여줌 (이스케이프)
+        //    → <h1>Header - 0</h1> 이 글자 그대로 출력됨
+        let textBox = document.querySelector('#text-output');
+        textBox.innerText = html;
+
+        // ③ innerHTML : 태그를 '실제 HTML'로 해석해서 렌더링
+        //    → Header - 0 이 h1 제목처럼 크게 출력됨
+        let htmlBox = document.querySelector('#html-output');
+        htmlBox.innerHTML = html;
+      };
+    </script>
+  </head>
+  <body>
+    <!-- innerText 결과를 담을 영역 -->
+    <div id="text-output"></div>
+
+    <hr />
+
+    <!-- innerHTML 결과를 담을 영역 -->
+    <div id="html-output"></div>
+  </body>
+</html>

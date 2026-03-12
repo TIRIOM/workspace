@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>while문</h3>
+    <pre>
+        작성법 
+        while (조건식) {
+            반복 수행할 코드
+        }
+    </pre>
+    <script>
+      let i = 0;
+      let array = [10, 20, 30, 40, 50];
+
+      while (i <= array.length) {
+        alert(array[i]);
+        //배열명 [인덱스번호] : 배열에 담긴 값 하나씩 꺼내기
+        i++;
+        //끝이 정해져 있으면 for을 쓰고
+        //무한이 도는 거면 while을 씀.
+      }
+    </script>
+  </body>
+</html>

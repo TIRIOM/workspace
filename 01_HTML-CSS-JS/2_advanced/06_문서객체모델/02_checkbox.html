@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체크박스 예제</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        좋아하는 음식은?
+        <!-- 1) 같은 name="food"로 묶인 체크박스 그룹 -->
+        <label><input type="checkbox" name="food" value="라면" /> 라면</label>
+        <label><input type="checkbox" name="food" value="만두" /> 만두</label>
+        <label><input type="checkbox" name="food" value="불고기" /> 불고기</label>
+
+        <!-- 2) 전송 버튼: type="button"이므로 폼을 제출하지 않고 click 이벤트만 발생 -->
+        <input id="btn" type="button" value="전송" />
+      </div>
+    </form>
+
+    <script>
+      // ── 핵심 개념 ──────────────────────────────────────────────
+      // querySelectorAll() : CSS 선택자와 일치하는 모든 요소를
+      //   NodeList(배열과 비슷한 객체)로 반환한다.
+      //
+      // checked 속성 : 체크박스가 선택되어 있으면 true, 아니면 false.
+      //
+      // for...of 루프 : 배열/NodeList 같은 "반복 가능한 객체"를
+      //   요소 하나씩 순서대로 꺼내서 처리한다.
+      // ──────────────────────────────────────────────────────────
+
+      // [3] 버튼 요소를 id로 가져온다
+      const btn = document.getElementById("btn");
+
+      // [4] 버튼 클릭 시 실행할 함수를 등록한다 (이벤트 리스너)
+      btn.addEventListener("click", function () {
+
+        // [5] name="food" 인 체크박스를 전부 수집한다
+        //     => NodeList (체크 여부와 무관하게 3개 모두 포함)
+        const checkboxes = document.querySelectorAll('input[name="food"]');
+
+        // [6] 선택된 값만 담을 빈 배열을 준비한다
+        const selected = [];
+
+        // [7] 체크박스를 하나씩 순회하며 선택 여부를 확인한다
+        for (const checkbox of checkboxes) {
+          if (checkbox.checked) {          // 체크되어 있으면
+            selected.push(checkbox.value); // 그 값을 배열에 추가
+          }
+        }
+
+        // [8] 결과를 콘솔에 출력한다
+        if (selected.length === 0) {
+          // 아무것도 선택하지 않은 경우
+          console.log("선택된 음식이 없습니다.");
+        } else {
+          // 선택한 값들을 쉼표로 이어 붙여 출력
+          console.log("선택한 음식:", selected.join(", "));
+        }
+      });
+    </script>
+  </body>
+</html>

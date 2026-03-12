@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const name = '김민건';
+      // 1. 문자열 리터럴 표기법 : ' ',""
+      // 2. 배열 리터럴 표기법 : []
+      // 3. 객체 리터럴 표기법 : {}
+
+      //객체는 속성과 기능을 가진다
+      let person = {
+        name: '박지훈',
+        eat: function (food) {
+          // 중요! 그냥 name 하면 위의 name을 인식! this. 을 줘야한다~!~@~!@!~@!~@!~@~!
+          // 같은 객체 내부의 다른 속성을 호출하고 싶은 경우
+          // 현재 객체를 뜻하는 'this.'를 써야 함
+          alert(this.name + '이' + food + '먹기');
+        },
+      };
+      console.log(person.name);
+      // 1.  함수명 : 함수 자체를 반환
+      console.log(person.eat);
+
+      // 2. 함수명 () : 함수 호출
+      console.log(person.eat());
+    </script>
+  </body>
+</html>
