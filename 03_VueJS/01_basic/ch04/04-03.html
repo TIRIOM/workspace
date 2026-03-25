@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 2) num 데이터 바인딩 -> 값 입력 시, 데이터 옵션에 작성된 num 값도 변경. -->
+      1보다 큰 수: <input type="text" v-model="num" /><br />
+      <!-- 4) sum() 반환값 바인딩 -> 변경된 num 값으로 다시 랜더링 -->
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // 1) data 옵션에서 객체 return -> proxy로 매핑
+          // -> 추적 , 관찰 수행
+          return { num: 0 };
+        },
+        computed: {
+          sum() {
+            // 3) data 옵션의 num 값이 변경시
+            // computed 옵션의 sum 함수가 자동으로 수행
+            // this.num : data 옵션의 num 값
+            console.log('num : ' + this.num);
+
+            // num 받을 때 .number으로 받아도 되는데, parseInt로 정수로 변환해서 받는 방법도 있다.
+            let n = parseInt(this.num);
+            // Numger.isNaN() : NaN인지 확인하는 메서드 , nan 이 맞으면 true 반환, 아니면 false 반환
+            if (Number.isNaN(n)) return 0;
+
+            // 1부터 n까지 합 공식 : n(n+1)/2
+            return (n * (n + 1)) / 2;
+
+            //return 값이 호출한 함수 sum()으로 반환된다.!!!
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-text 텍스트 렌더링 -->
+      <h2 v-text="message">Hi</h2>
+
+      <!-- v-html HTML 렌더링 -->
+      <h2 v-html="message"></h2>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var model = { message: '<i>Hello Vue3!</i>' }; // 이텔릭 태그 넣음. 근데 v-text는 태그를 문자로 인식해서 그대로 출력하지만, v-html은 태그로 인식해서 이텔릭체로 출력함.
+      // Vue 인스턴스 생성
+      var vm = Vue.createApp({
+        name: 'App', // 애플리케이션 이름 설정
+        data() {
+          // 컴포넌트의 반응형 데이터 정의
+          // data() 함수가 반환하는 객체의 속성들은 Vue의 반응형 시스템에 의해 관리됨
+          // -> 반환되는 model 객체의 message 속성값이 수정되면
+          //    v-text="message" / {{message}} 요소가 수정됨
+          return model;
+        },
+      }).mount('#app');
+      // mount : 올라타다, 설치하다, 부착하다
+      // mount('#app') : #app인 DOM 요소에 Vue 애플리케이션 마운트
+    </script>
+  </body>
+</html>

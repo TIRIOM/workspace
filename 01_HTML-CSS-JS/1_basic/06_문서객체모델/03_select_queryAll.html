@@ -8,26 +8,26 @@
       // window.onload : 브라우저가 HTML 페이지를 전부 읽은 뒤 실행
       // → 이 안에 코드를 작성해야 <body>의 태그를 찾을 수 있음
       window.onload = function () {
-
         // querySelectorAll('h1')
         // → 페이지 안의 모든 <h1> 태그를 한 번에 골라
         //   배열처럼 생긴 목록(NodeList)으로 돌려줌
         let array = document.querySelectorAll('h1');
 
+
+        //!!중요 여기서 스타일 주고 싶지만 불가능!!
+        //요소를 여러개 접근하는 경우, 배열 형태로 반환이 됨!
+        // -> 배열 내의 요소의 css나 이벤트 등을 적용하고 싶으면, 
+        //    인덱스 번호를 이용하여, 요소 하나에 직접 적용해야 한다. 
+
+
         // array.length : 목록 안에 있는 요소 개수 (여기서는 3)
         // i = 0 부터 시작해서 하나씩 증가하며 반복
         for (let i = 0; i < array.length; i++) {
-
           // array[i] : i번째 <h1> 요소 하나를 꺼냄
           const element = array[i];
 
-          // 텍스트 내용을 'From JavaScript'로 바꿈
           element.innerHTML = 'From JavaScript';
-
-          // 배경색을 빨간색으로 지정
           element.style.backgroundColor = 'red';
-
-          // 글자색을 노란색으로 지정
           element.style.color = 'yellow';
         }
       };

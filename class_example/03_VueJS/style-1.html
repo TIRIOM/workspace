@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .buttonColor {
+        background-color: aqua;
+        color: black;
+      }
+
+      .buttonLayout {
+        text-align: center;
+        width: 120px;
+      }
+
+      .staticBorder {
+        border: khaki dashed 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- ① 체크박스를 클릭하면 v-model이 isMyLayout 값을 true/false로 바꿔줌
+           → 체크   : isMyLayout = true
+           → 체크해제: isMyLayout = false -->
+      <input type="checkbox" v-model="isMyLayout" />
+      레이아웃 적용 여부<br />
+
+      <!-- ② isMyLayout이 바뀌면 Vue가 :class를 자동으로 다시 계산함
+
+           class="staticBorder"
+             → 고정 클래스. 항상 붙어있음. Vue와 무관.
+
+           :class="[myColor, isMyLayout ? myLayout : '']"
+             → 배열 안의 각 요소를 클래스로 추가함.
+
+             - myColor
+                 → data의 myColor 값('buttonColor')을 클래스로 붙임. 항상 적용.
+
+             - isMyLayout ? myLayout : ''
+                 → 삼항 연산자. 
+                 조건 ? 참일 때 값 : 거짓일 때 값
+                 ①에서 바뀐 isMyLayout 값을 여기서 읽음.
+                    isMyLayout = true  : myLayout 값('buttonLayout') 클래스 적용 ✔
+                    isMyLayout = false : 빈 문자열('')이므로 클래스 없음 ✘
+
+           최종 결과:
+             체크 전: class="staticBorder buttonColor"
+             체크 후: class="staticBorder buttonColor buttonLayout" -->
+      <button
+        class="staticBorder"
+        :class="[myColor, isMyLayout ? myLayout : '']"
+      >
+        버튼
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            myColor: 'buttonColor', // 항상 적용할 색상 클래스명
+            myLayout: 'buttonLayout', // 조건부로 적용할 레이아웃 클래스명
+            isMyLayout: false, // ①의 체크박스와 연결된 초기값 (false = 체크 해제 상태)
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

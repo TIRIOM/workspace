@@ -1,0 +1,44 @@
+<!-- Vue 인스턴스가 생성될 때, 마운트될때, 업데이트 될 때 콘솔에 로그를 출력하세요. -->
+<!-- 개념! 이거는 생명주기가 어떻게 돌아가는 지 알아보는 예제이다.!!!! -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      1보다 큰 수: <input type="text" v-model.number="num" /><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        created() {
+          // 생성될 때 호출됨
+          console.log('created');
+        },
+        mounted() {
+          // 마운트될 때 호출됨
+          console.log('mounted');
+        },
+        updated() {
+          // 업데이트 될 때 호출됨
+          console.log('updated');
+        },
+        computed: {
+          sum() {
+            let n = parseInt(this.num);
+            if (Number.isNaN(n)) return 0;
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

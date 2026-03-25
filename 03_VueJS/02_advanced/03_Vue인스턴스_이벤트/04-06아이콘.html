@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="app">
+      x : <input type="text" v-model.number="x" /><br />
+      y : <input type="text" v-model.number="y" /><br />
+      덧셈 결과 : {{sum}}
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { x: 0, y: 0, sum: 0 };
+        },
+        // 코딩 좀 재미있는듯....????
+        watch: {
+          x(current, old) {
+            console.log(`x :${old} ->${current}`);
+            this.sum = current + this.y;
+          },
+          y(curr, old) {
+            console.log(`y :${old} ->${curr}`);
+            this.sum = this.x + curr;
+          },
+          sum(curr, old) {
+            console.log(`sum :${old} ->${curr}`);
+          },
+        },
+        // computed: {
+        //   // x와 y가 변경될 때마다 sum() 함수가 자동으로 수행되도록 watch 옵션에 sum() 함수를 작성한다.
+        //   sum() {
+        //     // 여기 뭐 들어가야 할까
+        //     return this.x + this.y;
+        //   },
+        // },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

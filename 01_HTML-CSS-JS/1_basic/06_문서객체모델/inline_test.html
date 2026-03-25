@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function rec(h1, h2) {
+        //1. 입력 (데이터 가져오기)
+        //가로값 가져오기
+        let n1 = document.getElementById('n1').value; //input 태그에서 value 속성값만 가져와라...
+
+        //세로값 가져오기
+        document.getElementById('n2');
+        let n2 = document.getElementById('n2').value; //input 태그에서 value 속성값만 가져와라...
+        //2. 처리
+        //면적 계산하기
+        let n11 = parseInt(n1); //문자열을 int 로 바꿈
+        let n22 = parseInt(n2); // 추가 )  parseFloat -> 실수로 변경하고자 할 대
+
+        let result = n11 * n22;
+        //3. 출력
+        alert('사각형 면적 결과 : ' + result);
+
+        //추가 ) js에서 직접 변수에 값을 넣을 때는 문자 / 숫자 구분해서 넣을 수 있음
+        let age = 100; // 숫자로 인식
+        let age1 = '100세'; // 문자로 인식
+
+        //왜 ?) 브라우저에서 input 한 val 값은 모두 문자로 취급함
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 인라인은 태그에 속성을 지정해서 수정하는 것을 뜻한다.  -->
+    <span style="color: blue">가로값</span> : <input type="text" id="n1" />
+    <br />
+    <span>새로값</span> : <input type="text" id="n2" /> <br />
+
+    <!-- 1. 내장함수 사용  -->
+    <!-- 여기 따옴표 조심해야 함. 싱글 썼으면 <-> 더블  -->
+    <!-- <button
+      style="background: yellow; color: red"
+      onclick="alert('버튼을클릭했네요잉')"
+    >
+    </button> -->
+
+    <!-- 2. 사용자 정의 함수 사용  -->
+    <button style="background: yellow; color: red" onclick="rec()">
+      사각형의 면적 구하기
+    </button>
+  </body>
+</html>

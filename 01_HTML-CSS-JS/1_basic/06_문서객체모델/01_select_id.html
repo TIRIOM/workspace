@@ -16,7 +16,7 @@
     <pre>
         1. id로 접근하기 : document.getElementById("id속성값");
 
-                        <!-- 복수 형태(Elements)로 작성 -->
+                        <!-- 복수 형태(Elements)로 작성 : 요소가 1개라도 배열에 담겨 온다. -->
         2. name으로 접근하기 : document.getElementsByName("name속성값");
 
         3. class로 접근하기 : document.getElementsByClassName("class속성값");
@@ -39,8 +39,14 @@
         let header = document.getElementById('header');
         // console.log(header);
         header.style.color = 'orange';
-        header.style.color = 'red';
-        header.innerHTML = 'From JavaScript';
+        header.style.backgroundColor = 'red';
+
+        // header.innerHTML = 'From JavaScript';
+        header.innerText = 'From JavaScript';
+        /* innerHTML vs innerText
+          - inner HTML : 내용 변경 시 태그는 HTML 요소로 해석됨. 
+          - inner TEXT : 내용 변경 시 태그는 문자열 자체로 해석됨. 
+         */
       };
     </script>
     <h2 id="header">Header</h2>
