@@ -1,4 +1,3 @@
-` `
 <template>
   <div id="app" class="container">
     <div class="card card-body bg-light">
@@ -27,88 +26,89 @@
   </div>
 </template>
 
-<script>
+<script setup>
+// [Composition API 변환]
+// 기존 Options API:
+// import TodoList from './components/TodoList.vue';
+// import InputTodo from './components/InputTodo.vue';
+// import GeminiTodoForm from './components/GeminiTodoForm.vue';
+// export default {
+//   name: 'App',
+//   components: { InputTodo, TodoList, GeminiTodoForm }, // <-- 등록 필요했음
+//   data() { return { todoList: [...] } },
+//   computed: { totalCount() {}, completedCount() {}, ... },
+//   methods: { addTodo() {}, addTodos() {}, deleteTodo() {} },
+// };
+
+import { ref, computed } from 'vue';
+
+// <script setup> 에서는 import만 해도 자동으로 컴포넌트 등록됨 (components: 불필요)
 import TodoList from './components/TodoList.vue';
 import InputTodo from './components/InputTodo.vue';
 import GeminiTodoForm from './components/GeminiTodoForm.vue';
+
+// ref() : 반응형 배열 선언 (Options API의 data() return { todoList: [...] } 와 동일)
+// 배열 자체를 교체할 때는 todoList.value = [...] 사용
+// push/splice 등 배열 메서드는 .value 없이 todoList.value.push() 사용
 let ts = new Date().getTime();
-export default {
-  name: 'App',
-  components: { InputTodo, TodoList, GeminiTodoForm },
-  data() {
-    return {
-      todoList: [
-        { id: ts, todo: '자전거 타기', completed: false },
-        { id: ts + 1, todo: '딸과 공원 산책', completed: true },
-        { id: ts + 2, todo: '일요일 애견 카페', completed: false },
-        { id: ts + 3, todo: 'Vue 원고 집필', completed: false },
-      ],
-    };
-  },
-  computed: {
-    totalCount() {
-      return this.todoList.length;
-    },
-    completedCount() {
-      return this.todoList.filter((item) => item.completed).length;
-    },
-    incompleteCount() {
-      return this.todoList.filter((item) => !item.completed).length;
-    },
-    sortedTodoList() {
-      // 미완료(false), 완료(true) 두 그룹으로 분리
-      const incomplete = this.todoList.filter((item) => !item.completed);
-      const complete = this.todoList.filter((item) => item.completed);
+const todoList = ref([
+  { id: ts,     todo: '자전거 타기',    completed: false },
+  { id: ts + 1, todo: '딸과 공원 산책', completed: true },
+  { id: ts + 2, todo: '일요일 애견 카페', completed: false },
+  { id: ts + 3, todo: 'Vue 원고 집필',  completed: false },
+]);
 
-      // 각각 글자 오름차순 정렬 후 합치기 (미완료 먼저)
-      // 'en' 지정 → 영어가 한글보다 앞에 오도록
-      // filter()가 이미 새 배열을 만들어서 원본 todoList는 건드리지 않음
-      // sort()는 원본을 바꾸지만 여기선 filter()로 만든 새 배열에 적용하므로 안전
-      // 'en' 지정 → 영어가 한글보다 앞에 오도록
-      // 스프레드(...) → 두 배열을 하나로 합치기
-      return [
-        ...incomplete.sort((a, b) => a.todo.localeCompare(b.todo, 'en')),
-        ...complete.sort((a, b) => a.todo.localeCompare(b.todo, 'en')),
-      ];
-    },
-  },
-  methods: {
-    // InputTodo에서 전달된 todo를 추가하는 메서드
-    addTodo(receivedTodo) {
-      this.todoList.push({
-        id: new Date().getTime(),
-        todo: receivedTodo,
-        completed: false,
-      });
-    },
-    // GeminiTodoForm에서 전달된 todos를 추가하는 메서드
-    addTodos(generatedTodos) {
-      generatedTodos.forEach((item) => {
-        // foreach 쓰는 이유 : generatedtodos는 array임으로
-        this.todoList.push({
-          id: new Date().getTime() + Math.random(), // math.random() 추가해서 id 중복 방지
-          todo: item.todo,
-          completed: false,
-        });
-      });
-    },
-    // TodoList에서 전달된 id를 가진 todo를 삭제하는 메서드
-    deleteTodo(id) {
-      let index = this.todoList.findIndex((item) => id === item.id);
-      // 기본 형태
-      // (매개변수) => 반환값
+// computed() : 반응형 계산값 (Options API의 computed: { totalCount() {} } 와 동일)
+// todoList.value가 바뀔 때마다 자동으로 재계산됨
+const totalCount = computed(() => todoList.value.length);
 
-      // // 화살표 함수
-      // (item) => id === item.id
+const completedCount = computed(
+  () => todoList.value.filter((item) => item.completed).length
+);
 
-      // // 일반 함수
-      // function(item) {
-      //   return id === item.id;
-      // }
+const incompleteCount = computed(
+  () => todoList.value.filter((item) => !item.completed).length
+);
 
-      this.todoList.splice(index, 1);
-      // splice(인덱스, 삭제할 요소의 개수)
-    },
-  },
-};
+const sortedTodoList = computed(() => {
+  // 미완료(false), 완료(true) 두 그룹으로 분리
+  const incomplete = todoList.value.filter((item) => !item.completed);
+  const complete = todoList.value.filter((item) => item.completed);
+
+  // 각각 글자 오름차순 정렬 후 합치기 (미완료 먼저)
+  return [
+    ...incomplete.sort((a, b) => a.todo.localeCompare(b.todo, 'en')),
+    ...complete.sort((a, b) => a.todo.localeCompare(b.todo, 'en')),
+  ];
+});
+
+// 기존 methods 안의 함수 → 그냥 함수로 선언
+// this.todoList → todoList.value
+
+// InputTodo에서 전달된 todo를 추가하는 함수
+function addTodo(receivedTodo) {
+  todoList.value.push({           // this.todoList.push → todoList.value.push
+    id: new Date().getTime(),
+    todo: receivedTodo,
+    completed: false,
+  });
+}
+
+// GeminiTodoForm에서 전달된 todos를 추가하는 함수
+function addTodos(generatedTodos) {
+  generatedTodos.forEach((item) => {
+    // forEach 쓰는 이유 : generatedTodos는 array임으로
+    todoList.value.push({         // this.todoList.push → todoList.value.push
+      id: new Date().getTime() + Math.random(), // math.random() 추가해서 id 중복 방지
+      todo: item.todo,
+      completed: false,
+    });
+  });
+}
+
+// TodoList에서 전달된 id를 가진 todo를 삭제하는 함수
+function deleteTodo(id) {
+  let index = todoList.value.findIndex((item) => id === item.id); // todoList.value
+  todoList.value.splice(index, 1); // splice(인덱스, 삭제할 요소의 개수)
+}
 </script>
