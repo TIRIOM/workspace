@@ -11,6 +11,8 @@ import { ref } from 'vue';
 
 export default {
   name: 'Calc',
+  // setup() : 컴포넌트의 로직을 작성하는 함수
+  // 컴포넌트 생명 주기 : beforecreage 이후 created 이전에 실행됨
   setup() {
     // 힌트2: Composition API의 진입점 함수 이름. beforeCreate/created 단계에서 실행됨
     /* Options API의 data()+methods()를 대체하는 함수 */
